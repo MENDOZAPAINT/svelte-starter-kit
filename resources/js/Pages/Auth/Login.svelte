@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Link, useForm } from '@inertiajs/svelte';
-	import Button from '../../Components/ui/Button.svelte';
 	import SimpleAuthLayout from '../../Layouts/Auth/SimpleAuthLayout.svelte';
 
 	let { canResetPassword = false }: { canResetPassword?: boolean } = $props();
@@ -59,8 +58,8 @@
 			<label for="remember">Remember me</label>
 		</div>
 
-		<Button type="submit" disabled={$form.processing}>
+		<button type="submit" disabled={$form.processing}>
 			{$form.processing ? 'Signing in...' : 'Login'}
-		</Button>
+		</button>
 	</form>
 </SimpleAuthLayout>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Link, useForm } from '@inertiajs/svelte';
-	import Button from '../../Components/ui/Button.svelte';
 	import SimpleAuthLayout from '../../Layouts/Auth/SimpleAuthLayout.svelte';
 
 	// Declaramos el formulario
@@ -92,9 +91,9 @@
 				{/if}
 			</div>
 
-			<Button type="submit" class="w-full" disabled={$form.processing}>
+			<button type="submit" class="w-full" disabled={$form.processing}>
 				{$form.processing ? 'Creating account...' : 'Create account'}
-			</Button>
+			</button>
 		</form>
 
 		<div class="text-center text-sm">

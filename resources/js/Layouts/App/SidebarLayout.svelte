@@ -5,15 +5,15 @@
         PanelLeft,
         LayoutDashboard,
         User2Icon,
+        Component,
     } from "lucide-svelte";
     import { fade, fly } from "svelte/transition";
     import { onDestroy } from "svelte";
-    import ThemeToggle from "../../Components/ui/ThemeToggle.svelte";
     import SidebarContent from "./Sidebar/SidebarContent.svelte";
     import type { Snippet } from "svelte";
     import { page } from "@inertiajs/svelte";
     import { cn } from "../../lib/utils";
-    import Appearance from "@/Pages/Appearance.svelte";
+    import Appearance from "@/Components/Appearance.svelte";
 
     interface Props {
         children?: Snippet;
@@ -77,6 +77,11 @@
             title: "Dashboard",
             href: "/dashboard",
             icon: LayoutDashboard,
+        },
+        {
+            title: "Components",
+            href: "/components",
+            icon: Component,
         },
         {
             title: "User",

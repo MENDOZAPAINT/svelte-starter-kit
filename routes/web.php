@@ -10,15 +10,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', DashboardController::class)
-    ->middleware(['auth']) // temporarily removed 'verified'
+    ->middleware(['auth'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });
-
-Route::get('/settings', function () {
-    return Inertia::render('Settings');
-})->middleware(['auth']); // temporarily removed 'verified'
 
 require __DIR__ . '/auth.php';

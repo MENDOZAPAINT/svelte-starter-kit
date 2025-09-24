@@ -3,6 +3,8 @@
 @plugin 'tailwindcss-animate';
 
 @source '../views';
+@source '../js';
+@source '../js/**/*.{svelte,ts,tsx,js,jsx}';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @custom-variant dark (&:is(.dark *));
@@ -129,6 +131,8 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.439 0 0);
 }
+/* @source inline('lg:grid-cols-4'); */
+
 
 @layer base {
     * {
