@@ -1,8 +1,6 @@
 // index.d.ts
 import type { ComponentType } from "svelte";
 import type Home from "lucide-svelte/icons/home"; // importa cualquier icono
-import type { User } from '@/types/user';
-
 
 
 declare global {
