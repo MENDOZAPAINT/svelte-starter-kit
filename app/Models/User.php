@@ -47,15 +47,33 @@ class User extends Authenticatable // implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+    /**
+     * Get the user's avatars.
+     */
+    public function avatars()
+    {
+        return $this->hasMany(Avatar::class);
+    }
 
     /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
+     * Get the user's active avatar.
      */
-    public function sendPasswordResetNotification($token)
+    public function activeAvatar()
     {
-        $this->notify(new ResetPasswordNotification($token));
+        return $this->hasOne(Avatar::class)->where('is_active', true);
+    }
+
+    /**
+     * Get the avatar URL for the user.
+     */
+    public function getAvatarAttribute()
+    {
+        $activeAvatar = $this->activeAvatar;
+        
+        if ($activeAvatar && $activeAvatar->path) {
+            return asset('storage/' . $activeAvatar->path);
+        }
+        
+        return null;
     }
 }

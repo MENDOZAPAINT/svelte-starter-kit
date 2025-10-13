@@ -1,5 +1,6 @@
 <script lang="ts">
     import Span from "@/Components/Span.svelte";
+    import UpdateAvatar from "@/Form/UpdateAvatar.svelte";
     import UpdateUser from "@/Form/UpdateUser.svelte";
     import AppLayout from "@/Layouts/AppLayout.svelte";
 </script>
@@ -36,6 +37,7 @@
                     >02</span
                 >
                 <UpdateUser/>
+                <UpdateAvatar/>
             </div>
         </div>
     </div>

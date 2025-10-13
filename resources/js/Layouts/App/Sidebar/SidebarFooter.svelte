@@ -11,6 +11,7 @@
     import { page } from "@inertiajs/svelte";
     import { fly } from "svelte/transition";
     import { backOut } from "svelte/easing";
+    import Logout from "@/Components/Logout.svelte";
 
     const user: User | null = $state($page.props.auth?.user ?? null);
     interface Props {
@@ -89,11 +90,20 @@
                 : undefined}
             onclick={toggleDropdown}
         >
-            <User
-                class="h-4 w-4 shrink-0"
-                style="transition: none !important; transform: none !important;"
-                aria-hidden="true"
-            />
+            {#if user?.avatar}
+                <img 
+                    src={user.avatar} 
+                    alt="Avatar de {user.name}"
+                    class="h-9 w-9 shrink-0 rounded-full object-cover"
+                    style="transition: none !important; transform: none !important;"
+                />
+            {:else}
+                <User
+                    class="h-4 w-4 shrink-0"
+                    style="transition: none !important; transform: none !important;"
+                    aria-hidden="true"
+                />
+            {/if}
             {#if !isDesktop || !sidebarCollapsed}
                 <div class="grid flex-1 text-left text-sm leading-tight ml-3">
                     <span
@@ -180,18 +190,7 @@
                         <div
                             class="border-t border-border my-1 opacity-50 transition-opacity duration-300 hover:opacity-80"
                         ></div>
-
-                        <button
-                            class="group flex items-center gap-2 w-full px-2 py-1.5 text-sm text-destructive hover:bg-destructive/10 hover:text-destructive rounded-md transition-all duration-200 ease-out hover:scale-[1.02] hover:translate-x-1 active:scale-[0.98] active:translate-x-0 hover:shadow-sm focus:ring-2 focus:ring-red-500/20 focus:outline-none"
-                            role="menuitem"
-                            onclick={closeDropdown}
-                        >
-                            <LogOut
-                                class="h-4 w-4 transition-all duration-200 ease-out group-hover:scale-110 group-hover:rotate-3"
-                                aria-hidden="true"
-                            />
-                            Cerrar sesión
-                        </button>
+                        <Logout />
                     </div>
                 </div>
             </div>

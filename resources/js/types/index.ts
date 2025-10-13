@@ -2,11 +2,11 @@ export interface User {
     id: number;
     name: string;
     email: string;
-    image_url?: string | null;
+    avatar?: string | null;
 }
 
 export interface UserProps extends Pick<User, 'name' | 'email'> {
-    image_url?: string | null;
+    avatar?: string | null;
     onOptionsClick?: () => void;
 }
 
