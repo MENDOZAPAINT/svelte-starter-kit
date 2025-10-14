@@ -13,7 +13,7 @@
     let showRightDrawer = $state(false);
     let isLoading = $state(false);
     let errors = $state({});
-    let fileInput: HTMLInputElement;
+    let fileInput: HTMLInputElement | null = $state(null);
     let selectedFile: File | null = $state(null);
     let previewUrl: string | null = $state(null);
 

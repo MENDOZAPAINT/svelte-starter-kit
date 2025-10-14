@@ -13,6 +13,14 @@ use Illuminate\Support\Str;
 class UserService
 { 
     /**
+     * Actualizar los datos del usuario
+     */
+    public function updateUser(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    /**
      * Actualizar el avatar para el usuario
      */
     public function updateUserAvatar(User $user, UploadedFile $file): Avatar

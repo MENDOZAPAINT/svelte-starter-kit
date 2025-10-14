@@ -39,7 +39,6 @@
         errors = {}; // Reset errors
 
         router.put(`/user/${currentUser.id}`, formData, {
-            // 🔑 Simula redirección completa pero suave
             preserveState: false, // Refresca toda la página
             preserveScroll: false, // Reinicia scroll position
             replace: true, // Reemplaza historial
