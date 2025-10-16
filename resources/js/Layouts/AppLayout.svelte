@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-    <title>{title}</title>
+    <title>name app | {title}</title>
 </svelte:head>
 
 <SidebarLayout title={title}>

@@ -78,16 +78,16 @@
             href: "/dashboard",
             icon: LayoutDashboard,
         },
-        {
-            title: "Components",
-            href: "/components",
-            icon: Component,
-        },
-        {
-            title: "User",
-            href: "/user",
-            icon: User2Icon,
-        },
+        // {
+        //     title: "Components",
+        //     href: "/components",
+        //     icon: Component,
+        // },
+        // {
+        //     title: "User",
+        //     href: "/user",
+        //     icon: User2Icon,
+        // },
         
     ];
 

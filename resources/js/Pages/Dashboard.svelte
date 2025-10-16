@@ -5,4 +5,5 @@
 
 <AppLayout title="Dashboard">
     <Logout />
+     <!-- <p>Welcome to the Dashboard</p> -->
 </AppLayout>

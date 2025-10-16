@@ -8,7 +8,7 @@
     } from "lucide-svelte";
     import { cn } from "../../../lib/utils";
     import { onMount } from "svelte";
-    import { page } from "@inertiajs/svelte";
+    import { Link, page } from "@inertiajs/svelte";
     import { fly } from "svelte/transition";
     import { backOut } from "svelte/easing";
     import Logout from "@/Components/Logout.svelte";
@@ -23,15 +23,15 @@
     let dropdownOpen = $state(false);
     let dropdownRef = $state<HTMLDivElement>();
     let buttonRef = $state<HTMLButtonElement>();
-    let dropdownPosition = $state({ top: 0, left: 0 });
+    let dropdownPosition = $state({ bottom: 0, left: 0 });
 
     const toggleDropdown = () => {
         dropdownOpen = !dropdownOpen;
         if (dropdownOpen && isDesktop && sidebarCollapsed && buttonRef) {
-            // Calcular posición fija cuando está colapsado
+            // Calcular posición fija cuando está colapsado - el dropdown crecerá hacia arriba
             const rect = buttonRef.getBoundingClientRect();
             dropdownPosition = {
-                top: rect.top - 190, // Altura aproximada del dropdown
+                bottom: window.innerHeight - rect.top + 8, // Posicionar desde abajo para que crezca hacia arriba
                 left: rect.right + 11, // 11px de margen
             };
         }
@@ -91,8 +91,8 @@
             onclick={toggleDropdown}
         >
             {#if user?.avatar}
-                <img 
-                    src={user.avatar} 
+                <img
+                    src={user.avatar}
                     alt="Avatar de {user.name}"
                     class="h-9 w-9 shrink-0 rounded-full object-cover"
                     style="transition: none !important; transform: none !important;"
@@ -139,7 +139,7 @@
                         : "absolute bottom-full mb-1 left-0 right-0",
                 )}
                 style={isDesktop && sidebarCollapsed
-                    ? `top: ${dropdownPosition.top}px; left: ${dropdownPosition.left}px; z-index: 9999;`
+                    ? `bottom: ${dropdownPosition.bottom}px; left: ${dropdownPosition.left}px; z-index: 9999;`
                     : ""}
                 role="menu"
                 aria-orientation="vertical"
@@ -163,30 +163,18 @@
 
                     <!-- Menu Items -->
                     <div class="space-y-1">
-                        <button
+                        <Link
                             class="group flex items-center gap-2 w-full px-2 py-1.5 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-all duration-200 ease-out hover:scale-[1.02] hover:translate-x-1 active:scale-[0.98] active:translate-x-0 hover:shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
                             role="menuitem"
                             onclick={closeDropdown}
+                            href="/profile"
                         >
                             <UserIcon
                                 class="h-4 w-4 transition-all duration-200 ease-out group-hover:scale-110 group-hover:rotate-3"
                                 aria-hidden="true"
                             />
                             Perfil
-                        </button>
-
-                        <button
-                            class="group flex items-center gap-2 w-full px-2 py-1.5 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-all duration-200 ease-out hover:scale-[1.02] hover:translate-x-1 active:scale-[0.98] active:translate-x-0 hover:shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
-                            role="menuitem"
-                            onclick={closeDropdown}
-                        >
-                            <Settings
-                                class="h-4 w-4 transition-all duration-200 ease-out group-hover:scale-110 group-hover:rotate-3"
-                                aria-hidden="true"
-                            />
-                            Configuración
-                        </button>
-
+                        </Link>
                         <div
                             class="border-t border-border my-1 opacity-50 transition-opacity duration-300 hover:opacity-80"
                         ></div>

@@ -43,6 +43,5 @@
     <SidebarFooter 
         {isDesktop} 
         {sidebarCollapsed} 
-        {data} 
     />
 </aside>
