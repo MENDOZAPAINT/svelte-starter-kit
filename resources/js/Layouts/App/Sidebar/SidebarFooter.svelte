@@ -2,8 +2,6 @@
     import {
         User,
         ChevronsUpDown,
-        LogOut,
-        Settings,
         UserIcon,
     } from "lucide-svelte";
     import { cn } from "../../../lib/utils";
